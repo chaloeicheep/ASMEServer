@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+</head>
+<body>
+    <div id="Header">
+        <a href="/index.html">
+            <img src="/static/tlogo-small.png" border="0" />
+        </a>
+
+        <div id="featuredEvent">
+            <h2>Featured Event:</h2>
+            <table>
+                <tr>
+                    <td id="imageCell"><img style="width:100%;height:auto;max-width:100%;" src="{{featured['ImgDirectory']}}" /></td>
+                    <td><p style="text-align:left;">{{featured['Description']}}</p></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="Navigation">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/join">Join ASME</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprocket">Sprocket</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="calHeader">
+        <a style="font-size:1.5vw; text-decoration:none" href="/events?month={{previousMonth}}"><</a><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Month}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1><a style="font-size: 1.5vw; text-decoration: none" href="/events?month={{nextMonth}}">></a>
+    </div>
+    <table id="masterCal">
+        <tr id="firstRow">
+            <td style="border-top-left-radius:30px;"><p>Sunday</p></td>
+            <td><p>Monday</p></td>
+            <td><p>Tuesday</p></td>
+            <td><p>Wednesday</p></td>
+            <td><p>Thursday</p></td>
+            <td><p>Friday</p></td>
+            <td style="border-top-right-radius:30px;"><p>Saturday</p></td>
+        </tr>
+	{%set counter = 0%}
+        <tr>
+	{%for block in range(0, 7)%}
+		<td>
+		{%if startingDay == block%}
+			 <p id="calendarNum">1</p><br />
+			{%set counter = 1%}		
+                {%elif counter != 0%}
+                        {%set counter = counter + 1%}
+                        <p id="calendarNum">{{ counter }}</p>
+			<br />
+                {%endif%}
+		{%if counter != 0%}
+		{%for each in events[counter]%}
+            		<a id="standardButton" href="/eventhandler?e={{each['EventId']}}">{{each['Time']}} - {{each['Title']}}</a>
+        	{%endfor%}
+		{%endif%}
+		</td>
+	{%endfor%}
+        </tr>
+        <tr>
+	{%for current in range(secondStart, secondStart + 7)-%}
+	<td>
+		{%set counter = counter + 1-%}
+		 <p id="calendarNum">{{current}}</p>
+	<br />	
+                {%for each in events[current]-%}
+                        <a id="standardButton"  href="/eventhandler?e={{each['EventId']}}">{{each['Time']}} - {{each['Title']}}</a>
+                {%endfor%}
+	</td>	
+	{% endfor %}
+        </tr>
+        
+        <tr>
+        {%for current in range(secondStart + 7, secondStart + 14)-%}
+        <td>
+                {%set counter = counter + 1-%}
+                 <p id="calendarNum">{{current}}</p>
+        <br />
+                {%for each in events[current]-%}
+                        <a id="standardButton"  href="/eventhandler?e={{each['EventId']}}">{{each['Time']}} - {{each['Title']}}</a>
+                {%endfor%}
+        </td>
+        {% endfor %}
+        </tr>
+        
+        <tr>
+        {%for current in range(secondStart + 14, secondStart + 21)%}
+        <td>
+	{%if current <= lastDay%}
+                {%set counter = counter + 1%}
+                 <p id="calendarNum">{{current}}</p>
+        <br />
+                {%for each in events[current]%}
+                        <a id="standardButton" href="/eventhandler?e={{each['EventId']}}">{{each['Time']}} - {{each['Title']}}</a>
+                {%endfor%}
+	{%endif%}
+        </td>
+        {% endfor %}
+	{%if secondStart + 21 <= lastDay%}
+        </tr>	
+        <tr>
+        {%for current in range(secondStart + 21, secondStart + 28)%}
+        <td>
+	{%if current <= lastDay%}
+                {%set counter = counter + 1%}
+                 <p id="calendarNum">{{current}}</p>
+        <br />
+                {%for each in events[current]%}
+                        <a id="standardButton" href="/eventhandler?e={{each['EventId']}}">{{each['Time']}} - {{each['Title']}}</a>
+                {%endfor%}
+	{%endif%}
+        </td>
+        {% endfor %}
+        </tr>
+	{%endif%}
+        <tr id="bottomRow">
+            <td style="border-bottom-left-radius:30px;"><br /><br /></td>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+            <td style="border-bottom-right-radius:30px;"><br /><br /></td>
+        </tr>
+    </table>
+</body>
+</html>

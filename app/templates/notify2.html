@@ -1,0 +1,93 @@
+<!DOCTYPE html> <html lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+	<script>
+	function count(input)
+        {
+                var currentCount = input.value.length;
+                var countLeft = 160 - (currentCount % 160);
+                var totalTexts = Math.floor(currentCount / 160) + 1;
+                document.getElementById("CharLeft").innerHTML = countLeft;
+                document.getElementById("TotalTexts").innerHTML = totalTexts;
+        }
+
+	</script>
+     </head> <body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprockethandle">Sprocket Home</a></td>
+                <td><a href="/logout">Logout</a></td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <h1 style="text-align:center;margin-left:auto;margin-right:auto;display:block;">Manual Notification</h1>
+    <p style="text-align:center;">This notification system should be used for non-event notification purposes only.<br>When creating mass notification with an event, it is required that you use "Schedule an Event."</p>
+	<br>
+	<form action="/notify" name="notify" method="Post" style="display:block;margin-right:auto;margin-left:auto;width:30%;">
+	{{ form.hidden_tag() }}
+
+        {% for error in form.textMessage.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.textMessage(style="display:inline;") }}
+        <p  style="display:inline;">Send Text</p>
+        {% for error in form.emailMessage.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.emailMessage(style="display:inline;") }}
+        <p  style="display:inline;">Send Email</p>
+	<br><br><br>
+	{% for error in form.members.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	{{ form.members(style="display:inline;") }}
+	<p  style="display:inline;">Notify Members</p>
+	<br><br>
+	{% for error in form.marketing.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	{{ form.marketing( style="display:inline;") }}
+	<p style="display:inline;">Notify Marketing List</p>
+	<br><br>
+	{% for error in form.manual.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	{{ form.manual(style="display:inline;") }}
+	{% for error in form.manualNumbers.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	<p style="display:inline;margin-right:2%;">Manual Entry</p>
+	{{ form.manualNumbers(style="display:inline;", placeholder="Manual Phone Number") }}
+        <br><br>
+	<p style="text-align:center;">Message:</p>
+        {% for error in form.message.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	<div style="text-align:center;">
+        <p style="display:inline;">Characters Left:</p><p id="CharLeft" style="display:inline;"></p>
+        <p style="display:inline;">Total Texts:</p><p id="TotalTexts" style="display:inline;"></p>
+        <br><br>
+	{{ form.message(id="message",onkeyup="count(this);",onkeydown="count(this);", rows="6", cols="50", placeholder="Text and Email Message") }}
+	</div>
+	<input type="submit" value="Notify Members" style="margin-top:4%;text-align:center;margin-left:auto;margin-right:auto;display:block;">
+	<p style="text-align:center">Press this button only once.</p>
+    	
+	
+
+	</form>
+</body> </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+</head>
+<body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprockethandle">Sprocket Home</a></td>
+                <td><a href="/logout">Logout</a></td>
+            </tr>
+        </table>
+    </div>
+    <img id="sprocketLogo" src="/static/Sprocket-Logo.png" border="0" style="width:35%; float:left; margin-bottom:35%" />
+    <br />
+    <h1 style="text-align:left;">Control Panel</h1><br /><br>
+    {% for section in sections %}
+	<h2>{{section}}</h2>
+	<hr>
+    {% for command in commands %}
+    {% if command.section == section %}
+	<!-- Inputs: Name, Link -->
+        <a href="/{{command.link}}" style="text-decoration: none;color:Black;font-size:1.2vw; padding-left:1%; padding-right:1%;background-color:lightBlue; border-radius: 10px;">{{command.name}}</a>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</body>
+</html>
+

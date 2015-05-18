@@ -1,0 +1,90 @@
+<!DOCTYPE html> <html lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title> </head> <body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprockethandle">Sprocket Home</a></td>
+                <td><a href="/logout">Logout</a></td>
+            </tr>
+        </table>
+    </div>
+    <img id="sprocketLogo" src="/static/Sprocket-Logo.png" border="0" 
+style="width:10%; float:left;" />
+    <br />
+    <h1 style="text-align:center;">Create an Event</h1><br /><br />
+    <form action="/schedule" method="post" name="schedule" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>Title:</p>
+        {% for error in form.title.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.title() }}
+
+        <p>Date:</p>
+        {% for error in form.date.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.date(type="date") }}
+
+        <p>Time:</p>
+        {% for error in form.time.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.time(type="time") }}
+
+        <p>Event Address:</p>
+        {% for error in form.address.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.address() }}
+
+	<p>Text Buzzword:</p>
+	{% for error in form.buzzword.errors %}
+	<span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.buzzword() }}
+
+        <p>Short Description:</p>
+        {% for error in form.shortDescription.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.shortDescription() }}
+
+        <p>Description:</p>
+        {% for error in form.description.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.description() }}
+
+        <p>Event Image:</p>
+        {% for error in form.eventPicture.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.eventPicture }}
+
+        <p>Featured Event:</p>
+        {% for error in form.featured.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.featured() }}
+
+	<input type="submit" value="Schedule Event" />
+    </form>
+
+</body> </html>

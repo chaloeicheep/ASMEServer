@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+</head>
+<body>
+    <div id="Header">
+        <a href="/index.html">
+            <img src="/static/tlogo-small.png" border="0" />
+        </a>
+
+        <div id="Heartbeat">
+
+        </div>
+    </div>
+    <div id="Navigation">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/join">Join ASME</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprocket">Sprocket</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="Video">
+        <div id="ytplayer"></div>
+
+        <script>
+            // Load the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/player_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            // Replace the 'ytplayer' element with an <iframe> and
+            // YouTube player after the API code downloads.
+            var player;
+            function onYouTubePlayerAPIReady() {
+                player = new YT.Player('ytplayer', {
+                    height: window.innerHeight/2,
+                    width: window.innerWidth/2,
+                    videoId: 'M7lc1UVf-VE',
+                    playerVars: {'autoplay': 0, 'controls':0, 'modestbranding':1, 'showinfo':0}
+                });
+            }
+        </script>
+    </div>
+    <div id="vidText">
+        <p>Lorum Ipsum<br />Ipsum<br />Ipsum</p>
+    </div>
+    <div id="aboutHeader">
+        <h1>Let ASME Work for You</h1>
+        <p>This is a test</p>
+    </div>
+    <div id="aboutContent">
+        <h1></h1>
+        <table>
+            <tr>
+                <td><p>This is a test</p></td>
+                <td><p>This is a test</p></td>
+            </tr>
+            <tr>
+                <td><p>This is a test</p></td>
+                <td><p>This is a test</p></td>
+            </tr>
+            <tr>
+                <td><p>This is a test</p></td>
+                <td><p>This is a test</p></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

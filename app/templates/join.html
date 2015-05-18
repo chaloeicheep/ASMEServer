@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <title>SJSU ASME</title>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body onload="">
+    <div id="Header">
+        <a href="/index.html">
+            <img src="/static/tlogo-small.png" border="0" />
+        </a>
+
+        <div id="Heartbeat">
+
+        </div>
+    </div>
+    <div id="Navigation">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/join">Join ASME</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprocket">Sprocket</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="joinMain">
+        <div id="joinText">
+            <h1>Be a Part of a Community</h1>
+            <h2>filled with people just like you.</h2>
+        </div>
+        <table id="joinImages">
+            <tr>
+                <td><img src="/static/officer1.png" id="joinImages1" /></td>
+                <td><img src="/static/officer2.png" id="joinImages2" /></td>
+                <td><img src="/static/officer3.png" id="joinImages3" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Abhishek Yellapragada<br />Section President</h3>
+                </td>
+                <td>
+                    <h3>Kyle Smith<br />Section Site Administrator</h3>
+                </td>
+                <td>
+                    <h3>Ashwarya Subhluxmi<br />Section Vice-President</h3>
+                </td>
+            </tr>
+        </table>
+        <br /><br />
+        <h2 id="joinText">Want to Sign Up for ASME?<br />Here's How:</h2>
+        <form action="/join" method="post" name="join">
+            {{ form.hidden_tag() }}
+            <table>
+                <tr id="o1">
+                    <td class="joinLeft">
+                        <p>Let's start simple. What's your name?</p>
+                    </td>
+                    <td class="joinRight">
+                        <div class="sepDiv">
+                            <p>First Name:</p>
+                            {% for error in form.fname.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<input type="text" name="fname" onkeydown="a = 1; main();" />-->
+                            {{ form.fname() }}
+                        </div>
+                        <div class="sepDiv">
+                            <p>Last Name:</p>
+                            {% for error in form.lname.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<input type="text" name="lname" onkeydown="b = 1; main();" />-->
+                            {{ form.lname() }}
+                        </div>
+                    </td>
+                </tr>
+                <tr id="o2">
+                    <td class="joinLeft">
+                        <p>Now what are you doing at SJSU?</p>
+                    </td>
+                    <td class="joinRight">
+                        <div class="sepDiv">
+                            <p>What year are you?:</p>
+                            {% for error in form.year.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<select name="year" id="year" onchange="a = 1; main();" disabled>
+                                <option value=""></option>
+                                <option value="Freshman">Freshman</option>
+                                <option value="Sophomore">Sophomore</option>
+                                <option value="Junior">Junior</option>
+                                <option value="Senior">Senior</option>
+                                <option value="Fifth Year">Fifth Year</option>
+                                <option value="Six+">Sixth+ Year</option>
+                            </select>-->
+                            {{ form.year() }}
+                        </div>
+                        <div class="sepDiv">
+                            <p>What's your major?</p>
+                            <!--<input type="text" id="major" name="major" onkeydown="b = 1; main();" disabled />-->
+                            {{ form.major() }}
+                        </div>
+                        <div class="sepDiv">
+                            <p>With a focus?</p>
+                            {% for error in form.focus.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<input type="text" id="focus" name="focus" onkeydown="c = 1; main();" disabled />-->
+                            {{ form.focus() }}
+                        </div>
+                    </td>
+                </tr>
+                <tr id="o3">
+                    <td class="joinLeft">
+                        <p>Great! Now for how to reach you. <br /><br />Don't worry, we don't spam. (:</p>
+                    </td>
+                    <td class="joinRight">
+                        <div class="sepDiv">
+                            <p>What's your phone number?<br />(xxx)-xxx-xxxx</p>
+                            {% for error in form.phone.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<input type="text" id="phone" name="phone" onkeydown="a = 1; main();" disabled />-->
+                            {{ form.phone() }}
+                        </div>
+                        <div class="sepDiv">
+                            <p>How about your email?</p>
+                            {% for error in form.email.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<input type="text" id="email" name="email" onkeydown="b = 1; main();" disabled />-->
+                            {{ form.email() }}
+                        </div>
+                        <div class="sepDiv">
+                            <p>Can you recieve text messages?</p>
+                            <!--<input type="radio" id="cantext1" name="cantext" value="yes" checked disabled />-->
+                            <!--<input type="radio" id="cantext2" name="cantext" value="no" disabled />-->
+                            {% for error in form.cantext.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            {{ form.cantext(style="list-style-type: none;") }}
+                        </div>
+                    </td>
+                </tr>
+                <tr id="o4">
+                    <td class="joinLeft">
+                        <p>Alright, so now we'd like to get to know you.</p><p style="font-size:1vw; text-align:right;">Interests?<br />Focus?<br />Hobbies?<br />Favorite breakfast cereal?</p>
+                    </td>
+                    <td class="joinRight">
+                        <div class="sepDiv">
+                            <p>We like to create dynamic partnerships between our members, businesses, and senior projects. A few details about you can go a long way.<br /><br />Tell us a little about yourself:</p>
+                            <!--<textarea name="about" id="about" cols="80" rows="8" onkeydown="a = 1; main();" disabled></textarea>-->
+                            {% for error in form.about.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            {{ form.about(cols="80", rows="8") }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="joinLeft">
+                        <p>Finally, how would you like to login to Sprocket?</p>
+                    </td>
+                    <td class="joinRight">
+                        <div class="sepDiv">
+                            <p>Password:</p>
+                            {% for error in form.password.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            <br />
+                            {% endfor %}
+                            <!--<input type="text" name="lname" onkeydown="b = 1; main();" />-->
+                            {{ form.password(onkeydown="b = 1; main();") }}
+                        </div>
+                    </td>
+                </tr>
+                <tr id="o5">
+                    <td class="joinLeft">
+                    </td>
+                    <td class="joinRight">
+                        <div class="sepDiv">
+                            <!--<div class="g-recaptcha" data-sitekey="6LdvCQATAAAAALzAIjzY50U_qSn-PbkvavgemPQN"></div>-->
+                            <input style="margin-top:4%;" type="submit" value="All Finished!"/>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</body>
+</html>

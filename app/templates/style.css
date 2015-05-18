@@ -1,0 +1,456 @@
+﻿/*
+Stylesheet Format:
+   Positioning
+   Coloration
+   Animation    
+*/
+
+/*Index CSS*/
+
+/* Animations up Top*/
+@-webkit-keyframes fadeHoverContent {
+    0% {opacity: 0;}
+    100% {opacity : 0.7}
+}
+@-moz-keyframes fadeHoverContent {
+    0% {opacity: 0;}
+    100% {opacity : 0.7}
+}
+@-o-keyframes fadeHoverContent {
+    0% {opacity: 0;}
+    100% {opacity : 0.7}
+}
+@keyframes fadeHoverContent {
+    0% {opacity: 0;}
+    100% {opacity : 0.7}
+}
+
+@-webkit-keyframes toolbar {
+    0% {opacity: 0;}
+    100% {opacity : 1}
+}
+@-moz-keyframes toolbar {
+    0% {opacity: 0;}
+    100% {opacity : 1}
+}
+@-o-keyframes toolbar {
+    0% {opacity: 0;}
+    100% {opacity : 1}
+}
+@keyframes toolbar {
+    0% {opacity: 0;}
+    100% {opacity : 1}
+}
+
+@-webkit-keyframes fadeContentBackground {
+    0% {opacity: 0.1;}
+    100% {opacity : 0.6}
+}
+@-moz-keyframes fadeContentBackground {
+    0% {opacity: 0.1;}
+    100% {opacity : 0.6}
+}
+@-o-keyframes fadeContentBackground {
+    0% {opacity: 0.1;}
+    100% {opacity : 0.6}
+}
+@keyframes fadeContentBackground {
+    0% {opacity: 0.1;}
+    100% {opacity : 0.6}
+}
+
+html, body{
+    height:100%;
+    padding:0;
+    margin:0;
+}
+
+#Header{
+    background: -webkit-linear-gradient(lightgrey, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(lightgrey, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(lightgrey, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(lightgrey, white); /* Standard syntax */
+}
+
+#Header img{
+    width:50%;
+}
+#Heartbeat{
+    width:50%;
+    float:right;
+}
+
+#NavTable
+{
+   width:100%;
+   display:table;
+   table-layout:fixed;
+   padding-top:0.5%;
+   padding-bottom:0.5%;
+
+   -webkit-animation: hoverstatus 1s; /* Chrome, Safari, Opera */
+    animation: hoverstatus 1s;
+}
+
+#Navigation{
+    width:60%;
+    
+    background-color:#E6E6E6;
+    border-radius:40px;
+
+    -webkit-animation: toolbar 1s; /* Safari 4+ */
+    -moz-animation:    toolbar 1s; /* Fx 5+ */
+    -o-animation:      toolbar 1s; /* Opera 12+ */
+    animation:         toolbar 1s; /* IE 10+, Fx 29+ */
+}
+
+#Navigation td{
+    display:table-cell;
+    text-align:center;
+}
+
+#Navigation a{
+    border-radius:20px;
+    padding-right:5%;
+    padding-left:5%;
+    padding-top:1%;
+    padding-bottom:1%;
+
+    color:black;
+    text-decoration:none;
+    font-family:Arial;
+    font-size: 2vh;
+
+    transition: background-color 0.5s ease;
+}
+
+#Navigation a:hover{
+    background-color:lightblue;
+}
+
+.contentBackground{
+    width:100%;
+    height:100%;
+    opacity:0.6;
+
+    -webkit-animation: fadeContentBackground 1s; /* Safari 4+ */
+    -moz-animation:    fadeContentBackground 1s; /* Fx 5+ */
+    -o-animation:      fadeContentBackground 1s; /* Opera 12+ */
+    animation:         fadeContentBackground 1s; /* IE 10+, Fx 29+ */
+}
+
+.ContentBox{
+    background-color:lightgrey;
+    opacity:0.4;
+}
+
+.Content{
+    width:100%;
+    height:80%;
+    position:relative;
+}
+
+.HoverContent{
+    position:relative;
+    margin-left:50%;
+    top:-80%;
+    width:40%;
+    height:40%;
+    border-radius:40px;
+
+    background-color:white;
+    text-align:center;
+    -webkit-animation: fadeHoverContent 1.5s; /* Safari 4+ */
+    -moz-animation:    fadeHoverContent 1.5s; /* Fx 5+ */
+    -o-animation:      fadeHoverContent 1.5s; /* Opera 12+ */
+    animation:         fadeHoverContent 1.5s; /* IE 10+, Fx 29+ */
+    opacity:0.7;
+}
+
+.HoverContent h2{
+    font-size:xx-large;
+}
+
+.HoverContent p{
+    font-size:x-large;
+    opacity:1;
+    color:black;
+}
+
+/*Login CSS*/
+#sprocketLogo{
+    width:35%;
+    margin-top:2.5%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#login{
+    background-color:#D6D6D6;
+    border-radius:20px;
+    width:15%;
+    padding-left:1%;
+    padding-right:1%;
+    padding-bottom:1%;
+    padding-top:0.2%;
+
+    text-align:center;
+    font-size:large;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/*About CSS*/
+#vidText{
+    width:40%;
+    height:50%;
+    float:right;
+
+    margin-top:3%;
+    background-color:lightgrey;
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+    margin-bottom:4%;
+
+    -webkit-animation: toolbar 1s; /* Safari 4+ */
+    -moz-animation:    toolbar 1s; /* Fx 5+ */
+    -o-animation:      toolbar 1s; /* Opera 12+ */
+    animation:         toolbar 1s; /* IE 10+, Fx 29+ */
+
+}
+
+#Video{
+    float:left;
+    width:60%;
+    height:50%;
+    margin-top:3%;
+    text-align:center;
+    margin-bottom:4%;
+}
+
+#aboutHeader{
+    width:100%;
+    text-align:center;
+    font-size:1.5vw;
+}
+
+#aboutContent table{
+    width:100%;
+}
+
+#aboutContent table tr td{
+    display:table-cell;
+    width:50%;
+    text-align:center;
+}
+
+#aboutContent table tr td p{
+    text-align:center;
+}
+
+/*Events CSS*/
+
+#calHeader{
+    text-align:center;
+    margin-top:2%;
+
+    -webkit-animation: toolbar 1s; /* Safari 4+ */
+    -moz-animation:    toolbar 1s; /* Fx 5+ */
+    -o-animation:      toolbar 1s; /* Opera 12+ */
+    animation:         toolbar 1s; /* IE 10+, Fx 29+ */
+}
+
+#calHeader p, h1{
+    display:inline;
+}
+
+#firstRow{
+    text-align:center;
+    font-size:1vw;
+    background: -webkit-linear-gradient(#85C2FF, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#85C2FF, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#85C2FF, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#85C2FF, white); /* Standard syntax */
+}
+
+#bottomRow{
+    background: -webkit-linear-gradient(white, #85C2FF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #85C2FF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #85C2FF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #85C2FF); /* Standard syntax */
+}
+
+#masterCal{
+    width:90%;
+    margin-top:2%;
+    margin-left:auto;
+    margin-right:auto;
+
+    -webkit-animation: toolbar 1s; /* Safari 4+ */
+    -moz-animation:    toolbar 1s; /* Fx 5+ */
+    -o-animation:      toolbar 1s; /* Opera 12+ */
+    animation:         toolbar 1s; /* IE 10+, Fx 29+ */
+}
+
+#masterCal td{
+    border-style:solid;
+    border-width:1px;
+    border-color:grey;
+}
+
+#featuredEvent{
+    width:50%;
+    float:right;
+
+    -webkit-animation: toolbar 1s; /* Safari 4+ */
+    -moz-animation:    toolbar 1s; /* Fx 5+ */
+    -o-animation:      toolbar 1s; /* Opera 12+ */
+    animation:         toolbar 1s; /* IE 10+, Fx 29+ */
+}
+
+#imageCell{
+    width:24%;
+}
+
+#featuredEvent table{
+    border-style:solid;
+    border-width:4px;
+    border-color:lightgrey;
+}
+
+#featuredEvent h2{
+    margin-top:0;
+    margin-bottom:0;
+    text-align:center;
+}
+
+#featuredEvent table tr td p{
+    text-align:left;
+}
+
+/*Handler CSS*/
+
+#handlerWrapper{
+    width:100%;
+    margin-top:2%;
+    text-align:center;
+}
+
+#handlerWrapper h1{
+    font-size:2vw;
+}
+
+#handlerContent{
+    margin-top:2%;
+    width:50%;
+    float:right;
+    margin-bottom:40%;
+}
+
+#contentImg{
+    margin-top:2%;
+    margin-left:5%;
+    margin-right:auto;
+}
+
+#contentImg img{
+    width:45%;
+    float:left;
+    text-align:center;
+}
+
+#map-canvas{
+    width:50%;
+    height:100%;
+}
+
+/*Join CSS*/
+
+#joinMain {
+    margin-top:3%;
+    margin-bottom:5%;
+}
+
+#joinMain table{
+    margin-top:2%;
+    width:100%;
+}
+
+.joinLeft{
+    width:20%;
+    font-size:1.2vw;
+}
+
+.joinRight{
+    width:80%;
+    border-left-style:solid;
+    border-left-width:2px;
+    border-left-color:grey;
+}
+
+.joinRight div{
+    display:inline;
+    float:left;
+    margin-left:5%;
+}
+
+.sepDiv{
+    padding-top:1%;
+    padding-bottom:2%;
+}
+
+#o1{
+    -webkit-animation: toolbar 1s; /* Safari 4+ */
+    -moz-animation:    toolbar 1s; /* Fx 5+ */
+    -o-animation:      toolbar 1s; /* Opera 12+ */
+    animation:         toolbar 1s; /* IE 10+, Fx 29+ */
+}
+
+#joinText{
+    text-align:center;
+    width:100%;
+}
+
+#joinText h1{
+    font-size:3vw;
+}
+
+#joinText h2{
+    font-size:2vw;
+}
+
+#joinImages{
+    width:100%;
+}
+
+#joinImages td{
+    width:33%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+
+#joinImages1{
+    width:70%;
+    -webkit-animation: toolbar 4s; /* Safari 4+ */
+    -moz-animation:    toolbar 4s; /* Fx 5+ */
+    -o-animation:      toolbar 4s; /* Opera 12+ */
+    animation:         toolbar 4s; /* IE 10+, Fx 29+ */
+}
+
+#joinImages2{
+    width:70%;
+    -webkit-animation: toolbar 5s; /* Safari 4+ */
+    -moz-animation:    toolbar 5s; /* Fx 5+ */
+    -o-animation:      toolbar 5s; /* Opera 12+ */
+    animation:         toolbar 5s; /* IE 10+, Fx 29+ */
+}
+
+#joinImages3{
+    width:70%;
+    -webkit-animation: toolbar 6s; /* Safari 4+ */
+    -moz-animation:    toolbar 6s; /* Fx 5+ */
+    -o-animation:      toolbar 6s; /* Opera 12+ */
+    animation:         toolbar 6s; /* IE 10+, Fx 29+ */
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+</head>
+<body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/join">Join ASME</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprocket">Sprocket</a></td>
+            </tr>
+        </table>
+    </div>
+    <img id="sprocketLogo" src="/static/Sprocket-Logo.png" border="0" />
+    <br />
+    <form id="login" action="/sprocket" method="post" name="sprocketlogin">
+        {{ form.hidden_tag() }}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <p>Phone Number</p>
+            {% for error in form.phoneInput.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            <br />
+            {% endfor %}
+            {{ form.phoneInput() }}
+        <p>Password</p>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            <br />
+            {% endfor %}
+            {{ form.password() }}
+	<br><br>
+	<input type="submit" name="Login" />	
+     </form>
+<div style="text-align:center; margin-top:3%;">
+<a href="/recovery">Forgotten Password?</a>
+</div>
+</body>
+</html>
+

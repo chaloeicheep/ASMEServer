@@ -1,0 +1,91 @@
+<!DOCTYPE html> <html lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+ 
+    <script>
+	function submission(e)
+	{
+		e.which = e.which || e.keyCode;
+    		if(e.which == 13) {
+        	document.getElementById("submission").submit()
+    		}
+	}
+    </script>
+
+
+</head> <body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprockethandle">Sprocket Home</a></td>
+                <td><a href="/logout">Logout</a></td>
+            </tr>
+        </table>
+    </div>
+    <h1 style="text-align:center;margin-left:auto;margin-right:auto;display:block;">{{Title}}</h1>
+    <form style="width:50%; margin-left:auto; margin-right:auto;text-align:center;"  action="/marketing" method="post" name="marketingList">
+	{{ form.hidden_tag() }}
+
+        {% for error in form.addrm.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.addrm(style="list-style-type: none;") }}
+
+	{% for error in form.fname.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	{{ form.fname(placeholder="First", autofocus="") }}
+
+        {% for error in form.lname.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.lname(placeholder="Last") }}
+
+        {% for error in form.phone.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.phone(placeholder="Phone") }}
+
+        {% for error in form.email.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.email(placeholder="Email") }}
+	<br>
+	<input id="submission" type="submit" onKeyUp="submission(event);">
+
+    </form>
+
+    <table style="margin-left:auto;margin-right:auto;min-width:45%;text-align:center;background-color:#DDDDDD;border-radius: 25px;margin-top:2%;">
+	<tr>
+	{% for key in keys %}
+	<th>
+	{{key}}
+	</th>
+	{% endfor %}
+	</tr>
+	{% for each in list %}
+	<tr>
+	{% for key in keys %}
+	<td>{{each[key]}}</td>
+	{% endfor %}
+	</tr>
+	{% endfor %}
+    <table>
+	<tr>
+	
+	</tr>
+<br>
+<p style="text-align:center;">The size of this list is: {{list|length}}. </p>
+<br>
+</body> </html>

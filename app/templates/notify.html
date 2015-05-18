@@ -1,0 +1,118 @@
+<!DOCTYPE html> <html lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+
+	<script>
+	function editInputType(input)
+	{
+	if(input == "UseList")
+	{
+		
+		document.getElementById("MList").style.color = "black";
+		document.getElementById("ListEntryText").style.color = "black";
+		document.getElementById("ListEntry").disabled = false;
+		document.getElementById("ListEntryB").disabled = false;
+	}
+	else
+	{
+		
+		document.getElementById("MList").style.color = "LightGrey";
+		document.getElementById("ListEntryText").style.color = "LightGrey";
+		document.getElementById("ListEntry").disabled = true;
+		document.getElementById("ListEntryB").disabled = true;
+	}
+	}
+
+	function addPhone()
+	{
+		var input = document.getElementById("ListEntry").value;
+		var currentValues = document.getElementById("ManualList").value;
+		var output;
+		if(!currentValues)
+		{
+			output = input;
+			voutput = output;
+		}
+		else
+		{
+			voutput = input;
+			output = currentValues.concat(",",input);
+		}
+		document.getElementById("ManualList").value = output;
+		document.getElementById("ListEntry").value = "";
+		var newE = document.createElement("li");
+		newE.innerHTML = voutput;
+		document.getElementById("MList").appendChild(newE);
+	}
+	
+	function count(input)
+	{
+		var currentCount = input.value.length;
+		var countLeft = 160 - (currentCount % 160);
+		var totalTexts = Math.floor(currentCount / 160) + 1;
+		document.getElementById("CharLeft").innerHTML = countLeft;
+		document.getElementById("TotalTexts").innerHTML = totalTexts;
+	}
+
+	function clearList()
+	{
+		document.getElementById('ManualList').value = "";
+		document.getElementById('MList').innerHTML = "";
+	}
+	</script>
+
+
+     </head> <body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprockethandle">Sprocket Home</a></td>
+                <td><a href="/logout">Logout</a></td>
+            </tr>
+        </table>
+    </div>
+    <img id="sprocketLogo" src="/static/Sprocket-Logo.png" border="0" 
+style="width:10%; float:left;" />
+    <br />
+    <h1 style="text-align:center;">Notification Management</h1><br /><br />
+    
+    <input type="radio" onchange="editInputType(this.value);clearList();" name="inputType" value="UseDB" checked><p>Notify all members on file</p>
+    <input type="radio" onchange="editInputType(this.value);" name="inputType" value="UseList"><p>Notify specific phone numbers</p>
+
+    <ul id="MList">
+	
+    </ul>
+    <p id="ListEntryText" style="color:LightGrey">Enter phone numbers manually here:</p>
+    <input type="text" id="ListEntry" disabled>
+    <input type="button" id="ListEntryB" onclick="addPhone();" value="Insert" disabled>
+
+    <form action="/notify" method="post" name="notify">
+
+	{{ form.hidden_tag() }}
+        <p>Message:</p>
+        {% for error in form.message.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+	<p id="CharLeft"></p>
+	<p id="TotalTexts"></p>
+        {{ form.message(id="message",onkeyup="count(this);",onkeydown="count(this);") }}
+
+        {% for error in form.manualList.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        <p id="CharLeft"></p>
+        <p id="TotalTexts"></p>
+        {{ form.manualList(id="ManualList",onkeydown="count(this);",onchange="count(this);") }}
+
+	<input type="submit" value="Text Specified Users" />
+    </form>
+
+</body> </html>

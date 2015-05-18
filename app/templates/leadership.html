@@ -1,0 +1,71 @@
+<!DOCTYPE html> <html lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' href='/static/fav.png' type='image/x-icon'/ >
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+
+
+     </head> <body>
+    <div id="Navigation" style="width:100%;">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/index">Home</a></td>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprockethandle">Sprocket Home</a></td>
+                <td><a href="/logout">Logout</a></td>
+            </tr>
+        </table>
+    </div>
+<br>
+<hr>
+<div style="text-align:center;">
+{% for each in leadership %}
+{% if each.role == "President": %}
+<h2>{{each.role}}</h2>
+<p style="font-weight: bold;">{{each.fname}} {{each.lname}}</p>
+<p>{{each.phone}}</p>
+<p>{{each.email}}</p><br>
+{% endif %}
+{% endfor %}
+
+{% for each in leadership %}
+{% if each.role == "Vice President": %}
+<h2>{{each.role}}</h2>
+<p style="font-weight: bold;">{{each.fname}} {{each.lname}}</p>
+<p>{{each.phone}}</p>
+<p>{{each.email}}</p><br>
+{% endif %}
+{% endfor %}
+
+{% for each in leadership %}
+{% if each.role == "Treasurer": %}
+<h2>{{each.role}}</h2>
+<p style="font-weight: bold;">{{each.fname}} {{each.lname}}</p>
+<p>{{each.phone}}</p>
+<p>{{each.email}}</p><br>
+{% endif %}
+{% endfor %}
+
+{% for each in leadership %}
+{% if each.role == "Administrator": %}
+<h2>{{each.role}}</h2>
+<p style="font-weight: bold;">{{each.fname}} {{each.lname}}</p>
+<p>{{each.phone}}</p>
+<p>{{each.email}}</p><br>
+{% endif %}
+{% endfor %}
+
+{% for each in leadership %}
+{% if each.role != "President" and each.role != "Vice President" and each.role != "Treasurer" and each.role != "Administrator": %}
+<h2>{{each.role}}</h2>
+<p style="font-weight: bold;">{{each.fname}} {{each.lname}}</p>
+<p>{{each.phone}}</p>
+<p>{{each.email}}</p><br>
+{% endif %}
+{% endfor %}
+<hr>
+<br>
+
+</body> </html>

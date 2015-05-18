@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>SJSU ASME</title>
+</head>
+<body>
+    <div id="Header">
+        <a href="/index.html">
+            <img src="/static/tlogo-small.png" border="0" />
+        </a>
+
+        <div id="Heartbeat">
+
+        </div>
+    </div>
+    <div id="Navigation">
+        <table id="NavTable">
+            <tr>
+                <td><a href="/about">What We Do</a></td>
+                <td><a href="/join">Join ASME</a></td>
+                <td><a href="/events">Upcoming Events</a></td>
+                <td><a href="/sprocket">Sprocket</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="Validate1">
+        <h2>You're almost there!</h2>
+	</div>
+	<div class="Validate2">
+		<p>We've sent you a quick {{ validationType }} to make sure we can reach you. Once you've received it, type in the code provided into the box below.</p>
+	</div>
+	<div class="Validate3">
+		<form action="/validate" method="post" name="validate">
+		{{ form.hidden_tag() }}
+		{% for error in form.validationCode.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        <br />
+        {% endfor %}
+        {{ form.validationCode }}
+		<input type="submit" value="All Finished!"/>
+    </div>
+</body>
+</html>
